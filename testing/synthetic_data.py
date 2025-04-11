@@ -15,8 +15,8 @@ def create_binary_file(filename, num_entries):
             # Marker
             marker = 0xAA
             
-            # Timestamp (4-byte millis value)
-            timestamp = int(time.time() * 1000)  # Current time in milliseconds
+            # Timestamp (4-byte millis value, wrapped to 32 bits)
+            timestamp = int(time.time() * 1000) % (2**32)  # Current ms wrapped to 32 bits
             
             # ADC reading (2-byte voltage value, 10-bit ADC)
             adc_reading = random.randint(0, 1023)  # Random value between 0 and 1023
