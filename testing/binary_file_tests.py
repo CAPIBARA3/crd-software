@@ -32,14 +32,15 @@ def count_0xaa_entries(data=get_data()):
                 aa_count += 1
         return aa_count
 
-def compute_crc(data):
+def compute_crc(data=get_data()):
     """Compute CRC-8 using XOR for the given data."""
     crc = 0
     for b in data:
         crc ^= b
     return crc
+    # XOR is the inverse function of itself, therefore a value of 0 means the CRC is valid and data is not corrupted, or conincidentally corrupted for all values to cancel out.
 
-def check_crc(data):
+def check_crc(data=get_data()):
     """Check if the CRC-8 of the data is valid."""
     crc = compute_crc(data)
     if crc == 0:
