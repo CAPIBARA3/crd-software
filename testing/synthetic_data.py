@@ -9,7 +9,7 @@ def calculate_crc(data):
         crc ^= byte
     return crc
 
-def create_binary_file(filename, num_entries):
+def create_binary_file(filename, num_entries=10):
     with open(filename, 'wb') as f:
         for _ in range(num_entries):
             # Marker
@@ -31,4 +31,4 @@ def create_binary_file(filename, num_entries):
             f.write(data + bytes([crc]))
 
 # Create a binary file with 10 entries
-create_binary_file('data.bin', 10)
+create_binary_file('data.bin', 100)
