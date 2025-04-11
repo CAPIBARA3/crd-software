@@ -47,3 +47,11 @@ uint8_t compute_crc(uint8_t *data, int len) {
   }
   return crc;
 }
+
+
+// optional extension
+// - **Circular Buffer Logic:** Wrap around `fram_addr` when you reach the memory limit.
+// - **Erase Command:** Allow satellite to request a memory wipe/reset pointer.
+// - **Log Start/Stop Control:** Use a digital pin or command to pause logging during sensitive operations.
+// - **Sensor Interrupt Mode:** Use interrupts to only log when a cosmic ray hit is detected.
+// - **Timestamp Sync:** If you have a real-time clock or external sync, allow `timestamp` to reflect true UTC time.
