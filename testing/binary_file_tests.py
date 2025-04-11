@@ -3,12 +3,10 @@ def get_data(file_path="data.bin"):
         data = file.read()
         return data
 
-def get_file_size(file_path="data.bin"):
-    with open(file_path, 'rb') as file:
-        data = file.read()
-        size_in_bytes = len(data)
-        size_in_bits = size_in_bytes * 8
-        return size_in_bytes, size_in_bits    
+def get_file_size(data=get_data()):
+    size_in_bytes = len(data)
+    size_in_bits = size_in_bytes * 8
+    return size_in_bytes, size_in_bits    
 
 def count_0xaa_entries(data=get_data()):
     ax00_count = 0
@@ -30,7 +28,7 @@ def check_crc(data):
     else:
         return False
 
-def check_size(size):
+def check_size(size=get_file_size()[0]):
     if size == 0:
         return False
     if size % 16 == 0:
