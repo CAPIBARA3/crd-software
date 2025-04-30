@@ -22,13 +22,13 @@ def create_binary_file(filename, num_entries=10):
             adc_reading = random.randint(0, 1023)  # Random value between 0 and 1023
             
             # Pack the data into bytes
-            data = struct.pack('>B I H', marker, timestamp, adc_reading)
+            data = struct.pack('<B I H', marker, timestamp, adc_reading)  # Use little-endian
             
             # Calculate CRC-8
             crc = calculate_crc(data)
             
-            # Write the complete entry to the file
-            f.write(data + bytes([crc]))
+            # Write the complete entry to the file (8 bytes for primary + 8 bytes for backup)
+            f.write(data + bytes([crc]) + bytes(7))  # Fill the rest with zeros for backup
 
-# Create a binary file with 10 entries
+# Create a binary file with 100 entries
 create_binary_file('data.bin', 100)
