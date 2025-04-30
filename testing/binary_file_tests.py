@@ -55,7 +55,7 @@ def check_crc(data=get_data("data.bin")):
         return True
     return False
 
-def check_size(size):
+def check_size(size=get_file_size()[0]): # size in bytes
     """Check if the file size is a multiple of 16 = 2 x 8."""
     if size == 0:
         return False
