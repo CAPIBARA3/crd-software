@@ -10,21 +10,21 @@ def get_data(file_path="data.bin"):
         data = file.read()
         return data
 
-def check_not_empty(data):
+def check_not_empty(data=get_data("data.bin")):
     """Check if the binary data is not empty."""
     if len(data) == 0:
         raise ValueError("The binary data is empty.")
     else:
         return True
 
-def get_file_size(data):
+def get_file_size(data=get_data("data.bin")):
     """Get the size of the binary data in bytes and bits."""
     if check_not_empty(data):
         size_in_bytes = len(data)
         size_in_bits = size_in_bytes * 8
         return size_in_bytes, size_in_bits
 
-def count_0xaa_entries(data):
+def count_0xaa_entries(data=get_data("data.bin")):
     """Count the number of 0xaa entries in the binary data."""
     if check_not_empty(data):
         aa_count = 0
@@ -34,14 +34,14 @@ def count_0xaa_entries(data):
                 aa_count += 1
         return aa_count
 
-def compute_crc(data):
+def compute_crc(data=get_data("data.bin")):
     """Compute CRC-8 using XOR for the given data."""
     crc = 0
     for b in data:
         crc ^= b
     return crc
 
-def check_crc(data):
+def check_crc(data=get_data("data.bin")):
     """Check if the CRC-8 of each 16-byte entry is valid."""
     if check_not_empty(data):
         for i in range(0, len(data), 16):
@@ -63,19 +63,3 @@ def check_size(size):
         return True
     else:
         return False
-
-# Example usage
-data = get_data("data.bin")
-size_in_bytes, size_in_bits = get_file_size(data)
-if check_size(size_in_bytes):
-    print("File size is valid.")
-else:
-    print("File size is not valid.")
-
-aa_count = count_0xaa_entries(data)
-print(f"Number of 0xAA entries: {aa_count}")
-
-if check_crc(data):
-    print("All entries have valid CRC.")
-else:
-    print("Some entries have invalid CRC.")
