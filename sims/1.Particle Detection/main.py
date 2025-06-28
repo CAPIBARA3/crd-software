@@ -2,12 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Detector:
-    def __init__(self, material="EJ-200", area=1.5, height=1.5):
+    def __init__(self, material="EJ-200", side=1.5, height=1.5):
         self.material = material
-        self.area = area  # cm² (cross-section)
+        self.area = side**2  # cm² (cross-section)
         self.height = height  # cm (scintillator thickness)
         self.density = 1.023  # g/cm³ (EJ-200)
         self.photon_yield = 1e4  # photons/MeV (EJ-200)
+        self.energy_min = 0.05  # MeV (50 keV)
+        self.energy_max = 100  # MeV
         
     def energy_deposition(self, energy, particle="proton"):
         """Realistic Bethe-Bloch approximation."""
@@ -15,10 +17,10 @@ class Detector:
             return 1.5 + 0.05 * np.log(energy)  # MeV/cm
         elif particle == "alpha":
             return 6.0 + 0.2 * np.log(energy)
-        
-    def detect(self, energy, particle="proton"):
-        """Apply detector thresholds (50 keV–100 MeV)."""
-        return (energy >= 0.05) & (energy <= 100)
+
+    def detect(self, energy):
+        """Mask energies outside the detector's range."""
+        return (energy >= self.energy_min) & (energy <= self.energy_max)
 
 def cosmic_ray_flux(energy, altitude, particle="proton"):
     """
@@ -38,7 +40,7 @@ def cosmic_ray_flux(energy, altitude, particle="proton"):
     geomag_factor = 1 / (1 + (cutoff_energy / energy) ** 3)
 
     prop = {'proton':1.0,'alpha':0.1} # distribution of protons and alphas
-    return prop * base_flux * attenuation * geomag_factor
+    return prop[particle] * base_flux * attenuation * geomag_factor
 
 # Example usage
 detector = Detector()
