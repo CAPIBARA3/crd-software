@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from main import *
 
 # Generate data
 energies = np.logspace(-1, 2, 100)  # 0.1–100 MeV
