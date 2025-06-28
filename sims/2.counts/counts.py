@@ -19,10 +19,8 @@ def cosmic_ray_flux(energy, altitude, particle="proton"):
     scale_height = 0.5 # km (Earth's atmosphere)
     attenuation = np.exp(-(altitude - 100) / scale_height)
     geomag_factor = 1 / (1 + (0.5 / energy) ** 3)
-
-    if particle == "alpha":
-        return 0.1 * base_flux * attenuation * geomag_factor  # Alphas = 10% of protons
-    return base_flux * attenuation * geomag_factor
+    prop = {'proton':1.0,'alpha':0.1} # distribution of protons and alphas
+    return prop * base_flux * attenuation * geomag_factor
 
 def calculate_counts(flux, energy_bins, detector_area):
     """Integrate flux over energy bins (counts/cm²/s)."""
