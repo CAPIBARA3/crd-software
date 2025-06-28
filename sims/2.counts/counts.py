@@ -11,12 +11,17 @@ class Detector:
         """Mask energies outside the detector's range."""
         return (energy >= self.energy_min) & (energy <= self.energy_max)
 
-def cosmic_ray_flux(energy, altitude):
-    """Flux increases with altitude (logarithmic scale)."""
-    base_flux = 1.2e4 * energy**(-2.7)  # Base GCR flux (particles/cm²/s/MeV)
-    scale_height = 8.5  # km (Earth's atmosphere)
-    attenuation = np.exp((altitude - 100) / scale_height)  # + sign = less shielding at high alt
-    geomag_factor = 1 / (1 + (0.5 / energy)**3)  # Approx. geomagnetic cutoff
+def cosmic_ray_flux(energy, altitude, particle="proton"):
+    """
+    Flux model for protons/alphas. Flux inscreases logarithmically with altitude.
+    """
+    base_flux = 1.2e4 * energy ** (-2.7)
+    scale_height = 0.5 # km (Earth's atmosphere)
+    attenuation = np.exp(-(altitude - 100) / scale_height)
+    geomag_factor = 1 / (1 + (0.5 / energy) ** 3)
+
+    if particle == "alpha":
+        return 0.1 * base_flux * attenuation * geomag_factor  # Alphas = 10% of protons
     return base_flux * attenuation * geomag_factor
 
 def calculate_counts(flux, energy_bins, detector_area):
