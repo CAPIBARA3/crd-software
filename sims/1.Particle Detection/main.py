@@ -21,24 +21,24 @@ class Detector:
         return (energy >= 0.05) & (energy <= 100)
 
 def cosmic_ray_flux(energy, altitude, particle="proton"):
-    """Improved flux model with:
+    """
+    Flux model for protons/alphas. Flux inscreases logarithmically with altitude.
+    Improved flux model with:
        - Solar modulation
        - Atmospheric attenuation (scale height)
        - Geomagnetic cutoff (simplified)
     """
     base_flux = 1.2e4 * energy**(-2.7 + 0.2)  # Solar max adjustment
-    
     # Atmospheric attenuation (scale height ~8.5 km)
     scale_height = 8.5  # km
     attenuation = np.exp(-(altitude - 100) / scale_height)
-    
+
     # Geomagnetic cutoff (placeholder)
     cutoff_energy = 0.5  # GeV for 50° inclination
-    geomag_factor = 1 / (1 + (cutoff_energy / energy)**3)
-    
-    if particle == "alpha":
-        return 0.1 * base_flux * attenuation * geomag_factor
-    return base_flux * attenuation * geomag_factor
+    geomag_factor = 1 / (1 + (cutoff_energy / energy) ** 3)
+
+    prop = {'proton':1.0,'alpha':0.1} # distribution of protons and alphas
+    return prop * base_flux * attenuation * geomag_factor
 
 # Example usage
 detector = Detector()
