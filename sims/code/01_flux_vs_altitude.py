@@ -16,4 +16,4 @@ for alt in altitudes:
 plt.xlabel("Energy [MeV]"); plt.ylabel("Flux [particles/cm²/s/MeV]")
 plt.title("Realistic Cosmic Ray Flux (Protons) with Detector Thresholds")
 plt.legend(); plt.grid(); plt.show()
-plt.savefig('01_flux_vs_altitude.png')
+plt.savefig('../figs/01_flux_vs_altitude.png')

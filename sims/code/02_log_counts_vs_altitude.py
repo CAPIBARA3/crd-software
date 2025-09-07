@@ -25,5 +25,5 @@ plt.xlabel("Altitude [km]", fontsize=12)
 plt.ylabel("Detected Counts per Second (log scale)", fontsize=12)
 plt.title("CAPIBARA Count Rate vs. Altitude (Logarithmic Scale)", fontsize=14)
 plt.grid(True, which="both", linestyle='--')  # Grid for log scale
-plt.savefig("02_log_counts_vs_altitude.png", dpi=300)
+plt.savefig("../figs/02_log_counts_vs_altitude.png", dpi=300)
 plt.show()

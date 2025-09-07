@@ -54,5 +54,5 @@ cbar.set_label('log10(Flux)', fontsize=12)
 ax.view_init(elev=30, azim=45)
 
 plt.tight_layout()
-plt.savefig('../figs/realistic_flux_3d.png', dpi=300)
+plt.savefig('../figs/03_flux_energy_altitude.png', dpi=300)
 plt.show()
