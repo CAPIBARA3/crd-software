@@ -53,3 +53,27 @@ Key Simplifications:
 
 ## 4. Results
 
+### Flux vs Altitude
+![Flux vs Altitude](figs/01a_flux_vs_altitude.png)
+
+Shows how particle flux increases with altitude. At high altitudes attenuation is negligible (see next figure).
+
+### 01b Atmospheric Attenuation vs Altitude
+![Atmospheric Attenuation vs Altitude](figs/01b_atmospheric_attenuation.png)
+
+Figure shows how atmosphere blocks more particles at lower altitudes and that at $\sim 100\ \mathrm{km}$, the atmospheric attenuation is negligible. Typical LEO altitudes are $300-600\  \mathrm{km}$.
+
+### 02 Log Counts vs Altitude
+![Log Counts vs Altitude](figs/02_log_counts_vs_altitude.png)
+
+Shows particle flux in counts and in dependence of altitude. The detector only sees a small fraction of the total flux due to its small size and energy limits.
+
+### 03 Proton vs Alpha
+![Proton vs Alpha](figs/03_proton_vs_alpha.png)
+
+Shows comparison between proton and alpha particle flux and energy detection, where protons are 10x more frequent than alpha particles.
+
+### 04 Flux Energy Altitude
+![Flux Energy Altitude](figs/04_flux_energy_altitude.png)
+
+3D surface plot showing how flux varies with both energy and altitude. Higher altitudes and lower energies yield higher fluxes, but the detector only captures a small portion due to its energy limits.
