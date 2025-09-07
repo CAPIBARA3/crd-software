@@ -20,5 +20,5 @@ plt.title("Atmospheric Attenuation vs Altitude for Protons")
 plt.grid(True, which="both")
 plt.legend()
 plt.ylim(1e-3, 1.2)  # show sea level to top-of-atmosphere clearly
-plt.show()
 plt.savefig("../figs/01b_atmospheric_attenuation.png")
+plt.show()
