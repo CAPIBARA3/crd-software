@@ -42,10 +42,14 @@ Key Simplifications:
  * Approximates atmospheric blocking with exponential decay.
 
 ## 3. Files
-* `01_flux_vs_altitude.py`: Calculates particle flux at different altitudes.
+* `01a_flux_vs_altitude.py`: Calculates particle flux at different altitudes.
+* `01b_atmospheric_attenuation.py`: Creates attenuation vs altitude figure.
 * `02_log_counts_vs_altitude.py`: Simulates particle count in the detector in function of altitude.
 * `03_proton_vs_alpha.py`: Compares flux and energy detection between protons and alpha particles.
 * `04_flux_energy_altitude.py`: Combines flux per energy and altitude to show a 3D surface plot.
 * `main.py`: Contains `Detector` class and `cosmoc_ray_flux` function for all other files.
 
 **Requirements:** `numpy matplotlib`
+
+## 4. Results
+
