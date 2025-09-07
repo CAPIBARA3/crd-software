@@ -40,3 +40,10 @@ Our detector uses:
 Key Simplifications:
  * Assumes particles lose energy linearly in the scintillator (real physics is more complex).
  * Approximates atmospheric blocking with exponential decay.
+
+## 3. Files
+* `01_flux_vs_altitude.py`: Calculates particle flux at different altitudes.
+* `02_log_counts_vs_altitude.py`: Simulates particle count in the detector in function of altitude.
+* `03_proton_vs_alpha.py`: Compares flux and energy detection between protons and alpha particles.
+* `04_flux_energy_altitude.py`: Combines flux per energy and altitude to show a 3D surface plot.
+* `main.py`: Contains `Detector` class and `cosmoc_ray_flux` function for all other files.
