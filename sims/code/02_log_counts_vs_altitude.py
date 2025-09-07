@@ -4,17 +4,17 @@ from main import *
 
 def calculate_counts(flux, energy_bins, detector_area):
     """Integrate flux over energy bins (counts/cm²/s)."""
-    return np.trapz(flux, energy_bins) * detector_area
+    return np.trapezoid(flux, energy_bins) * detector_area
 
 # Generate energy/altitude grid
 energies = np.logspace(-1, 2, 100)  # 0.1–100 MeV
-altitudes = np.linspace(300, 600, 5)  # 300–600 km
+altitudes = np.linspace(30, 300, 10)  # 300–600 km
 detector = Detector()
 
 # Calculate counts/sec at each altitude (logarithmic scale)
 counts = []
 for alt in altitudes:
-    flux = cosmic_ray_flux(energies, alt)
+    flux = cosmic_ray.flux(energies, alt)
     detectable = detector.detect(energies)
     counts.append(calculate_counts(flux[detectable], energies[detectable], detector.area))
 
