@@ -8,7 +8,7 @@ altitude = 500  # Fixed altitude
 
 plt.figure(figsize=(10, 6))
 for particle, color in [("proton", "blue"), ("alpha", "red")]:
-    flux = cosmic_ray_flux(energies, altitude, particle)
+    flux = cosmic_ray.flux(energies, altitude, particle)
     plt.loglog(energies, flux, color, label=particle.capitalize(), linewidth=2)
 
 plt.xlabel("Energy [MeV]", fontsize=12)
