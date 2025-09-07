@@ -47,3 +47,5 @@ Key Simplifications:
 * `03_proton_vs_alpha.py`: Compares flux and energy detection between protons and alpha particles.
 * `04_flux_energy_altitude.py`: Combines flux per energy and altitude to show a 3D surface plot.
 * `main.py`: Contains `Detector` class and `cosmoc_ray_flux` function for all other files.
+
+**Requirements:** `numpy matplotlib`
